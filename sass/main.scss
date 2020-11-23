@@ -1,0 +1,321 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+@import "reboot";
+
+@import "variables";
+
+@import "mixins";
+
+@import "grid";
+
+@import "typography";
+
+.fluid-img {
+    max-width: 100%;
+    height: auto;
+}
+
+.collapse {
+    &:not(.show) {
+        display: none;
+    }
+
+    @include breakpoint-md {
+        display: block !important;
+    }
+}
+
+.btn {
+    display: inline-block;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    outline: 0;
+
+    &.primary-btn {
+        background-color: $primary;
+        color: $white;
+    }
+
+    &.secondary-btn {
+        background-color: $secondary;
+        color: $primary;
+    }
+}
+
+.navigation {
+    position: fixed;
+    background-color: $white;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+
+    @include breakpoint-md{
+        background-color: transparent;
+    }
+
+    .navbar {
+        padding: 0.5rem 1rem;
+        position: relative;
+        width: 100%;
+        border-bottom: 1px solid lighten($grey, 40%);
+
+        @include breakpoint-md {
+            border: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        @include breakpoint-lg{
+            padding: 1.25rem 1rem;
+        }
+
+        .navbar-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .branding {
+                display: inline-block;
+                padding-top: 0.3125rem;
+                padding-bottom: 0.3125rem;
+                font-size: 1.25rem;
+                white-space: nowrap;
+                line-height: 0;
+                max-width: 4rem;
+                margin-right: 2rem;
+
+                @include breakpoint-md {
+                    max-width: 4rem;
+                }
+
+                @include breakpoint-xxl {
+                    max-width: 6rem;
+                }
+            }
+
+            .nav-toggle {
+                border: 0;
+                outline: 0;
+                background: transparent;
+                margin-left: auto;
+                padding: 0.5rem;
+                height: 2.5rem;
+                width: 2.5rem;
+
+                @include breakpoint-md {
+                    display: none;
+                }
+
+                .burger-bars {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 3px;
+                    width: 100%;
+                    background-color: $grey;
+                    position: relative;
+
+                    &::before,
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        height: 3px;
+                        width: 100%;
+                        background-color: $grey;
+                    }
+
+                    &::before {
+                        top: -0.5rem;
+                    }
+
+                    &::after {
+                        top: 0.5rem;
+                    }
+                }
+            }
+        }
+
+        .nav-collapse {
+            @include breakpoint-md {
+                display: block;
+            }
+
+            .nav {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+
+                .nav-item {
+                    .nav-link {
+                        text-decoration: none;
+                        color: $grey;
+                        padding: .5rem 1rem;
+                        display: block;
+                        font-weight: 500;
+
+                        @include breakpoint-xxl{
+                            font-size: 1.125rem;
+                        }
+                    }
+
+                    &.active {
+                        .nav-link {
+                            color: $primary;
+                        }
+                    }
+                }
+
+                @include breakpoint-md {
+                    flex-direction: row;
+                }
+
+            }
+        }
+    }
+}
+
+.hero {
+    position: relative;
+
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: $white;
+        z-index: 0;
+
+        transform: skewY(-5deg);
+        transform-origin: top left;
+
+        @include breakpoint-lg{
+            transform: skewX(-10deg);
+            left: -40%;
+        }
+    }
+
+    &::after{
+        content: '';
+        background: url("../images/photo.jpg") no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        position: absolute;
+        top: 80%;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+
+        z-index: -1;
+
+        @include breakpoint-lg{
+            top: 0;
+            background-position: 50vh center;
+            background-size: contain;
+        }
+
+        @include breakpoint-xl{
+            background-position: right center;
+        }
+
+        @include breakpoint-xxl{
+            background-position: 92vh top;
+        }
+    }
+
+    .hero-text-container {
+        padding-top: 8rem;
+        padding-bottom: 4rem;
+
+        h1 {
+            font-size: 2rem;
+            color: $primary;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+            line-height: 1.2;
+        }
+
+        p {
+            color: $grey;
+            font-size: 1.125rem;
+            margin: 0;
+            margin-bottom: 1.5rem;
+            line-height: normal;
+        }
+
+        .btn {
+            padding: 1rem 3rem;
+            font-size: 1.125rem;
+            margin-bottom: 0.8rem;
+            border-radius: .5rem;
+        }
+
+        
+
+        @include breakpoint-md{
+            h1{
+                font-size: 3rem;
+            }
+
+            .btn {
+                margin-right: .5rem;
+            }
+        }
+
+        @include breakpoint-lg {
+            flex: 0 0 50%;
+
+            h1{
+                font-size: 2.8rem;
+            }
+        }
+
+        @include breakpoint-xl{
+            flex: 0 0 50%;
+
+            h1{
+                font-size: 3.3rem;
+            }
+        }
+
+        @include breakpoint-xxl{
+            padding-top: 16.5rem;
+            padding-bottom: 9rem;
+
+            h1{
+                font-size: 4.5rem;
+            }
+
+            p{
+                font-size: 1.5rem;
+            }
+
+            .btn{
+                font-size: 1.4rem;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .hero-image {
+        background-image: url("../images/photo.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 45vh;
+        margin-top: -2.5rem;
+        z-index: -2;
+
+        @include breakpoint-md {
+            flex: 0 0 50%;
+        }
+    }
+}
